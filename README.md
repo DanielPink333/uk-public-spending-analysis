@@ -36,6 +36,16 @@ This chart shows how administration budgets for the three departments have chang
 
 ![Department Trends](results/charts/department_trends.png)
 
+## Percentage Growth Analysis (2020–21 to 2025–26)
+
+In addition to visual trends, this project calculates the percentage change in administration budgets for Health, Education, and Defence over the five-year period.
+
+This provides a clear comparison of **relative budget growth**, not just absolute spending levels.
+
+The full calculated results are available here:
+`results/percentage_growth_2020_2025.csv`
+
+
 ## How to Run
 1. Install dependencies:
 
