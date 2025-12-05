@@ -73,5 +73,9 @@ plt.title("UK Administration Budgets – Health vs Education vs Defence (Trends)
 plt.xticks(rotation=45, ha="right")
 plt.legend()
 plt.tight_layout()
+plt.savefig("results/charts/department_trends.png", dpi=300)
+plt.savefig("results/charts/department_comparison_2025.png", dpi=300)
 plt.show()
+
+
 
