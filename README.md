@@ -24,6 +24,18 @@ HM Treasury – Public Expenditure Statistical Analyses (PESA)
 - Defence budgets show a steady upward trend  
 - Education budgets remain relatively stable by comparison  
 
+## Visual Results
+
+### UK Administration Budgets (2025–26)
+This chart compares the latest available administration budgets for Health, Education, and Defence.
+
+![Department Comparison 2025](results/charts/department_comparison_2025.png)
+
+### Multi-Year Budget Trends (2020–21 to 2025–26)
+This chart shows how administration budgets for the three departments have changed over time.
+
+![Department Trends](results/charts/department_trends.png)
+
 ## How to Run
 1. Install dependencies:
 
