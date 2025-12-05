@@ -50,6 +50,26 @@ df_core = df[
 print("\nHealth, Education & Defence (all years):")
 print(df_core)
 # ================================
+# PERCENTAGE GROWTH CALCULATION (2020–21 to 2025–26)
+# ================================
+
+growth_df = df_core[["Department", "2020–21", "2025–26"]].copy()
+
+# Calculate percentage growth
+growth_df["Percent Change"] = (
+    (growth_df["2025–26"] - growth_df["2020–21"]) / growth_df["2020–21"]
+) * 100
+
+# Round for readability
+growth_df["Percent Change"] = growth_df["Percent Change"].round(2)
+
+print("\nPercentage growth from 2020–21 to 2025–26:")
+print(growth_df)
+
+# Save results to CSV for GitHub
+growth_df.to_csv("results/percentage_growth_2020_2025.csv", index=False)
+
+# ================================
 # BAR CHART: 2025–26 COMPARISON
 # ================================
 
