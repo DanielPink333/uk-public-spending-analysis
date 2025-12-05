@@ -49,6 +49,45 @@ df_core = df[
 
 print("\nHealth, Education & Defence (all years):")
 print(df_core)
+# ================================
+# BAR CHART: 2025–26 COMPARISON
+# ================================
+
+latest_values = df_core[["Department", "2025–26"]].copy()
+
+fig1 = plt.figure()
+plt.bar(latest_values["Department"], latest_values["2025–26"] / 1000)
+plt.ylabel("£ billion (2025–26)")
+plt.title("UK Administration Budgets – Health vs Education vs Defence (2025–26)")
+plt.xticks(rotation=30, ha="right")
+plt.tight_layout()
+
+fig1.savefig("results/charts/department_comparison_2025.png", dpi=300)
+plt.show()
+plt.close(fig1)
+
+
+# ================================
+# MULTI-YEAR TREND CHART
+# ================================
+
+years = ["2020–21", "2021–22", "2022–23", "2023–24", "2024–25", "2025–26"]
+
+fig2 = plt.figure()
+
+for _, row in df_core.iterrows():
+    plt.plot(years, row[1:], marker="o", label=row["Department"])
+
+plt.ylabel("£ million")
+plt.title("UK Administration Budgets – Health vs Education vs Defence (Trends)")
+plt.xticks(rotation=45, ha="right")
+plt.legend()
+plt.tight_layout()
+
+fig2.savefig("results/charts/department_trends.png", dpi=300)
+plt.show()
+plt.close(fig2)
+
 
 # ---- PREPARE DATA FOR TREND PLOTTING ----
 
@@ -61,21 +100,6 @@ years = [
     "2024–25",
     "2025–26"
 ]
-# ---- MULTI-YEAR TREND CHART ----
-
-plt.figure()
-
-for _, row in df_core.iterrows():
-    plt.plot(years, row[1:], marker="o", label=row["Department"])
-
-plt.ylabel("£ million")
-plt.title("UK Administration Budgets – Health vs Education vs Defence (Trends)")
-plt.xticks(rotation=45, ha="right")
-plt.legend()
-plt.tight_layout()
-plt.savefig("results/charts/department_trends.png", dpi=300)
-plt.savefig("results/charts/department_comparison_2025.png", dpi=300)
-plt.show()
 
 
 
