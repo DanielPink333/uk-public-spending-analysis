@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 file_path = "data/pesa.xlsx"
 
@@ -49,6 +50,9 @@ df_core = df[
 
 print("\nHealth, Education & Defence (all years):")
 print(df_core)
+
+
+
 # ================================
 # PERCENTAGE GROWTH CALCULATION (2020–21 to 2025–26)
 # ================================
@@ -108,18 +112,65 @@ fig2.savefig("results/charts/department_trends.png", dpi=300)
 plt.show()
 plt.close(fig2)
 
+# =====================================================
+# INTERNATIONAL COMPARISON: COFOG (G7 PEERS)
+# =====================================================
 
-# ---- PREPARE DATA FOR TREND PLOTTING ----
+# Load COFOG per-capita data
+cofog_df = pd.read_csv("data/cofog/g7_cofog_per_capita.csv")
 
-# Manually assign financial year labels
-years = [
-    "2020–21",
-    "2021–22",
-    "2022–23",
-    "2023–24",
-    "2024–25",
-    "2025–26"
+# Clean strings (important)
+cofog_df["Country"] = cofog_df["Country"].astype(str).str.strip()
+cofog_df["Function"] = cofog_df["Function"].astype(str).str.strip()
+
+print("\nCOFOG dataset loaded:")
+print(cofog_df.head())
+
+PEER_COUNTRIES = [
+    "United Kingdom",
+    "United States",
+    "France",
+    "Germany",
+    "Japan"
 ]
 
+df_peers = cofog_df[cofog_df["Country"].isin(PEER_COUNTRIES)].copy()
 
+print("\nUK vs selected G7 peers (raw rows):")
+print(df_peers)
+
+wide_peers = df_peers.pivot(
+    index="Function",
+    columns="Country",
+    values="Spending_Per_Capita_USD"
+)
+
+function_order = ["Health", "Education", "Defence"]
+wide_peers = wide_peers.reindex(function_order)
+
+print("\nWide peer comparison table:")
+print(wide_peers)
+
+x = np.arange(len(wide_peers.index))
+bar_width = 0.15
+
+plt.figure(figsize=(10, 6))
+
+for i, country in enumerate(wide_peers.columns):
+    plt.bar(
+        x + i * bar_width,
+        wide_peers[country],
+        width=bar_width,
+        label=country
+    )
+
+plt.xticks(x + bar_width * (len(wide_peers.columns) - 1) / 2, wide_peers.index)
+plt.ylabel("Spending per capita (USD)")
+plt.title("Government Functional Spending per Capita – UK vs Selected G7 Peers (COFOG, 2022)")
+plt.legend()
+plt.grid(axis="y", linestyle="--", alpha=0.3)
+plt.tight_layout()
+
+plt.savefig("results/charts/uk_vs_g7_peers_cofog_per_capita.png", dpi=300)
+plt.show()
 
