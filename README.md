@@ -9,8 +9,6 @@ This project analyses UK government spending trends using Python, combining:
 The analysis focuses on Health, Education, and Defence, bringing together multi-year UK budget trends with cross-country benchmarking against certain G7 peers.
 
 
----
-
 ## Key Findings
 - **UK administration spending changes are uneven across policy areas.**  
   Planned administration budgets for Health, Education, and Defence show different growth trajectories between 2020–21 and 2025–26.
@@ -30,7 +28,6 @@ The analysis focuses on Health, Education, and Defence, bringing together multi-
 - **Peer-to-peer comparison provides clearer insight than aggregated averages.**  
   Comparing the UK directly to individual G7 countries highlights differences that can be obscured by a single combined benchmark.
 
----
 
 ## Data Sources
 
@@ -47,7 +44,6 @@ The analysis focuses on Health, Education, and Defence, bringing together multi-
 
 Note: International comparisons are based on the latest year with consistent COFOG coverage across countries. UK budget analysis uses forward-looking national plans, so the two sections intentionally cover different timeframes.
 
----
 
 ## Analysis Structure
 
@@ -58,8 +54,14 @@ UK PESA data is filtered to **Health, Education, and Defence**, producing:
 - A multi-year trend chart (2020–21 to 2025–26)
 
 
-- `results/charts/department_comparison_2025.png`
-- `results/charts/department_trends.png`
+**2025–26 administration budget comparison**
+
+![UK administration budget comparison (2025–26)](results/charts/department_comparison_2025.png)
+
+**Multi-year administration budget trends (2020–21 to 2025–26)**
+
+![UK administration budget trends](results/charts/department_trends.png)
+
 
 ### 2) Percentage Growth Analysis (PESA)
 The project calculates percentage change in administration budgets between 2020–21 and 2025–26.
@@ -75,18 +77,18 @@ Using OECD COFOG per-capita data, the UK is compared directly with selected G7 p
 - Germany
 - Japan
 
-This comparison focuses on functional spending priorities, rather than headline totals, and uses direct peer benchmarking.
+This comparison focuses on functional spending priorities rather than headline totals, and uses direct peer benchmarking.
 
-**Output**
-- `results/charts/uk_vs_g7_peers_cofog_per_capita.png`
+**Per-capita government functional spending comparison (COFOG, 2022)**
 
----
+![UK vs selected G7 peers – COFOG per capita](results/charts/uk_vs_g7_peers_cofog_per_capita.png)
+
+
 
 ## Methodology Notes
 - UK and international analyses are deliberately kept separate to preserve data integrity. COFOG data is used for functional comparability, while PESA is used for UK budget analysis.
  All charts and tables are generated using Python to support reproducibility and transparency.
 
----
 
 ## Tools & Techniques
 - Python
@@ -95,7 +97,6 @@ This comparison focuses on functional spending priorities, rather than headline 
 - Excel / CSV ingestion
 - GitHub – documentation
 
----
 
 ## Project Purpose
 This project was developed to:
@@ -105,7 +106,6 @@ This project was developed to:
 - Produce clear, reproducible outputs suitable for policy and financial analysis contexts
 - Demonstrate practical Python data analysis skills
 
----
 
 # Author
 Daniel Pink
